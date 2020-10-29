@@ -76,7 +76,7 @@ while (1):
                                   showCrosshair=True)
             # set up the ROI for tracking
             x, y, w, h = [int(v) for v in track_window]
-            roi = frame[y:y + h, x:x + w]
+            roi = frame[x:x + w, y:y + h]
             hsv_roi = cv.cvtColor(roi, cv.COLOR_BGR2HSV)
             mask = cv.inRange(hsv_roi, np.array((int(args.m_h), int(args.m_s),int(args.m_v))), np.array((int(args.M_h), int(args.M_s),int(args.M_v))))
             roi_hist = cv.calcHist([hsv_roi], [0], mask, [180], [0, 180])
